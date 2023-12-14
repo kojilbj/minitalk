@@ -56,7 +56,7 @@ int	main(void)
 	while (1)
 	{
 		pause();
-		usleep(100);
+		usleep(250);
 	}
 	return (0);
 }

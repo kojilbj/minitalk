@@ -38,7 +38,7 @@ void	send_bit(int pid, unsigned char bin)
 				exit_err("Wrong Process ID\n");
 		}
 	}
-	if (usleep(300) != 0)
+	if (usleep(50) != 0)
 		exit_err("usleep\n");
 }
 
@@ -49,7 +49,7 @@ void	send_zero(int pid, unsigned char digits)
 		if (kill(pid, SIGUSR1) == -1)
 			exit_err("Wrong Process ID\n");
 		digits++;
-		if (usleep(300) != 0)
+		if (usleep(50) != 0)
 			exit_err("usleep\n");
 	}
 }
