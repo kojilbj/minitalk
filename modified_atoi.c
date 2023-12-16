@@ -10,13 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-
-static void	exit_err(char *msg)
-{
-	ft_putstr_fd(msg, STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
+#include "minitalk.h"
 
 static long	modified_strtol(const char *str, int sign)
 {

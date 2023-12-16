@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include <signal.h>
-
-int	modified_atoi(const char *str);
+#include "minitalk.h"
 
 void	exit_err(char *msg)
 {
@@ -42,7 +39,7 @@ void	send_bit(int pid, unsigned char bin)
 		exit_err("usleep\n");
 }
 
-void	send_zero(int pid, unsigned char digits)
+void	send_zero(int pid, int digits)
 {
 	while (digits < 8)
 	{
@@ -54,11 +51,17 @@ void	send_zero(int pid, unsigned char digits)
 	}
 }
 
-int	count_bin_digits(int depth, unsigned char bin)
+int	count_bin_digits(unsigned char bin)
 {
-	if (bin != 0)
-		depth = count_bin_digits(depth + 1, bin / 2);
-	return (depth);
+	int	digits;
+
+	digits = 0;
+	while (bin != 0)
+	{
+		bin /= 2;
+		digits++;
+	}
+	return (digits);
 }
 
 int	main(int ac, char *av[])
@@ -68,20 +71,20 @@ int	main(int ac, char *av[])
 	if (ac != 3)
 		exit_err("Invalid argument\n");
 	pid = ft_atoi(av[1]);
-	while(*av[1])
+	while (*av[1])
 	{
 		if(!('0' <= *av[1] && *av[1] <= '9'))
 			exit_err("Invalid Process ID\n");
 		av[1]++;
 	}
-	if(pid < 1)
+	if (pid < 1)
 		exit_err("Invalid Process ID\n");
 	while (*av[2])
 	{
-		send_zero(pid, count_bin_digits(0, *av[2]));
+		send_zero(pid, count_bin_digits(*av[2]));
 		send_bit(pid, *av[2]);
 		av[2]++;
 	}
-	send_zero(pid, count_bin_digits(0, 0));
+	send_zero(pid, count_bin_digits(0));
 	return (0);
 }

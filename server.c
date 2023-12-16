@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include <signal.h>
+#include "minitalk.h"
 
 void	signal_handler(int signum)
 {
@@ -42,15 +41,9 @@ int	main(void)
 	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
-	{
-		ft_putstr_fd("sigaction\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
+		exit_err("sigaction\n");
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
-	{
-		ft_putstr_fd("sigaction\n", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
+		exit_err("sigaction\n");
 	pid = getpid();
 	ft_printf("Server is running!\nProcess ID is \"%d\"\n", pid);
 	while (1)
