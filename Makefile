@@ -9,7 +9,7 @@ all: server client
 
 server: $(OBJS)
 	$(MAKE) -C ./libft
-	$(CC) $(CFLAGS) server.o -o server -L./libft -lft
+	$(CC) $(CFLAGS) server.o modified_atoi.o -o server -L./libft -lft
 
 client: $(OBJS)
 	$(MAKE) -C ./libft

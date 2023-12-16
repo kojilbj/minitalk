@@ -6,9 +6,9 @@
 
 //modified_atoi.c
 int	modified_atoi(const char *str);
+void	exit_err(char *msg);
 
 //client.c
-void	exit_err(char *msg);
 void	send_bit(int pid, unsigned char bin);
 void	send_zero(int pid, int digits);
 

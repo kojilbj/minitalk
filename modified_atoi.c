@@ -6,11 +6,17 @@
 /*   By: watanabekoji <watanabekoji@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:44:06 by kojwatan          #+#    #+#             */
-/*   Updated: 2023/11/30 13:22:41 by watanabekoj      ###   ########.fr       */
+/*   Updated: 2023/12/16 15:42:23 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void	exit_err(char *msg)
+{
+	ft_putstr_fd(msg, STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
 
 static long	modified_strtol(const char *str, int sign)
 {

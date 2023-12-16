@@ -6,7 +6,7 @@
 /*   By: watanabekoji <watanabekoji@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:40:52 by kojwatan          #+#    #+#             */
-/*   Updated: 2023/12/09 13:13:10 by watanabekoj      ###   ########.fr       */
+/*   Updated: 2023/12/16 15:49:47 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(void)
 	while (1)
 	{
 		pause();
-		usleep(250);
+		usleep(50);
 	}
 	return (0);
 }

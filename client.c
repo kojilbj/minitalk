@@ -6,17 +6,11 @@
 /*   By: watanabekoji <watanabekoji@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:41:01 by kojwatan          #+#    #+#             */
-/*   Updated: 2023/12/09 13:13:02 by watanabekoj      ###   ########.fr       */
+/*   Updated: 2023/12/16 15:48:55 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-void	exit_err(char *msg)
-{
-	ft_putstr_fd(msg, STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
 
 void	send_bit(int pid, unsigned char bin)
 {
