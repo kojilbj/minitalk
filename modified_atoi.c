@@ -12,12 +12,6 @@
 
 #include "minitalk.h"
 
-void	exit_err(char *msg)
-{
-	ft_putstr_fd(msg, STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
-
 static long	modified_strtol(const char *str, int sign)
 {
 	int	result;

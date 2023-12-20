@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: watanabekoji <watanabekoji@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
+
+void	client_signal_handler(int signum)
+{
+	if (signum == SIGUSR1)
+	{
+		usleep(25);
+		return ;
+	}
+	if (signum == SIGUSR2)
+		exit(EXIT_SUCCESS);
+}
 
 void	send_bit(int pid, unsigned char bin)
 {
@@ -28,9 +39,8 @@ void	send_bit(int pid, unsigned char bin)
 			if (kill(pid, SIGUSR1) == -1)
 				exit_err("Wrong Process ID\n");
 		}
+		sleep_one_second();
 	}
-	if (usleep(70) != 0)
-		exit_err("usleep\n");
 }
 
 void	send_zero(int pid, int digits)
@@ -40,7 +50,7 @@ void	send_zero(int pid, int digits)
 		if (kill(pid, SIGUSR1) == -1)
 			exit_err("Wrong Process ID\n");
 		digits++;
-		usleep(70);
+		sleep_one_second();
 	}
 }
 
@@ -59,17 +69,19 @@ int	count_bin_digits(unsigned char bin)
 
 int	main(int ac, char *av[])
 {
-	int	pid;
+	pid_t			pid;
+	struct sigaction	sa;
 
+	sa.sa_flags = 0;
+	sa.sa_handler = client_signal_handler;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	if (ac != 3)
 		exit_err("Invalid argument\n");
+	if (process_id_validate(av[1]) == 1)
+		exit_err("Invalid Process ID\n");
 	pid = modified_atoi(av[1]);
-	while (*av[1])
-	{
-		if (!('0' <= *av[1] && *av[1] <= '9'))
-			exit_err("Invalid Process ID\n");
-		av[1]++;
-	}
 	if (pid < 1)
 		exit_err("Invalid Process ID\n");
 	while (*av[2])
