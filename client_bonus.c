@@ -6,7 +6,7 @@
 /*   By: watanabekoji <watanabekoji@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:41:01 by kojwatan          #+#    #+#             */
-/*   Updated: 2023/12/16 15:48:55 by kojwatan         ###   ########.fr       */
+/*   Updated: 2023/12/21 00:24:18 by kojwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	count_bin_digits(unsigned char bin)
 
 int	main(int ac, char *av[])
 {
-	pid_t			pid;
+	pid_t				pid;
 	struct sigaction	sa;
 
 	sa.sa_flags = 0;
